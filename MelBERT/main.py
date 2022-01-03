@@ -4,6 +4,7 @@ import pickle
 import random
 import copy
 import numpy as np
+import pandas as pd
 
 import torch
 import torch.nn as nn
@@ -130,10 +131,10 @@ def main():
         model = load_trained_model(args, model, tokenizer)
 
 
-'''
+
     ########### Inference ###########
-    # VUA18 / VUA20
-    if (args.do_eval or args.do_test) and task_name == "vua":
+    # idiom
+    if (args.do_eval or args.do_test) and task_name == "idiom":
         # if test data is genre or POS tag data
         if ("genre" in args.data_dir) or ("pos" in args.data_dir):
             if "genre" in args.data_dir:
@@ -147,12 +148,16 @@ def main():
                 all_guids, eval_dataloader = load_test_data(
                     args, logger, processor, task_name, label_list, tokenizer, output_mode
                 )
-                run_eval(args, logger, model, eval_dataloader, all_guids, task_name)
+                run_eval(args, logger, model, eval_dataloader, all_guids, task_name, return_preds=True)
         else:
             all_guids, eval_dataloader = load_test_data(
                 args, logger, processor, task_name, label_list, tokenizer, output_mode
             )
-            run_eval(args, logger, model, eval_dataloader, all_guids, task_name)
+            final = run_eval(args, logger, model, eval_dataloader, all_guids, task_name, return_preds=True) # return_preds=True 추가
+            #print('final len: ', len(final))
+            df = pd.DataFrame(final)
+            df.to_csv('./make_submission/final.csv', index=False, encoding='cp949')
+            #print(final)
 
     # TroFi / MOH-X (K-fold)
     elif (args.do_eval or args.do_test) and args.task_name == "trofi":
@@ -177,7 +182,7 @@ def main():
         for key in sorted(avg_result.keys()):
             logger.info(f"  {key} = {str(avg_result[key])}")
     logger.info(f"Saved to {logger.log_dir}")
-'''
+
 
 def run_train(
     args,
