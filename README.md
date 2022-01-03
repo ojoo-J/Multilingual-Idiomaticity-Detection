@@ -5,7 +5,7 @@ Multilingual Idiomaticity Detection and Sentence Embedding
 Subtask A, zero-shot setting only
 
 ## MelBERT
-orig: https://github.com/jin530/MelBERT
+Orig: https://github.com/jin530/MelBERT
 ### requirements
 boto3==1.16.63 </br>
 nltk==3.5 </br>
