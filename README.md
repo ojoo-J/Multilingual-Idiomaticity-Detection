@@ -1,13 +1,13 @@
 # SemEval-2022-task2
 Multilingual Idiomaticity Detection and Sentence Embedding 
 
-## MelBERT
+## MelBERT_MyCode
 Orig: https://github.com/jin530/MelBERT
 
 ### Data
 Subtask A, zero-shot setting only
 
-### requirements
+### Requirements
 boto3==1.16.63 </br>
 nltk==3.5 </br>
 numpy==1.20.0 </br>
@@ -19,16 +19,18 @@ torchvision==0.7.0 </br>
 tqdm==4.56.0 </br>
 transformers==4.2.2 </br>
 
-### train
-~~~
-python main.py --model_type MELBERT --bert_model xlm-roberta-base
-~~~
-- cfg 파일에서 do_train = True, do_test = False, do_eval = True로 설정.
-- data/dev.csv → data/test.csv로 이름 변경 후 사용.
+### Model Type
+- **MELBERT**: SPV + MIP / only target sentence / convert_examples_to_two_features()
+- **MELBERT_CONTEXT**: SPV + MIP / context o / convert_examples_to_two_features_with_context()
+- **MELBERT_SPV**: SPV / only target sentence / convert_examples_to_features()
+- **MELBERT_SPV_CONTEXT**: SPV / context o / convert_examples_to_features_with_context()
 
-### inference
+
+### Run
 ~~~
-python main.py --model_type MELBERT --bert_model {path of saves file}
+python main.py
 ~~~
-- cfg 파일에서 do_train = False, do_test = True, do_eval = False로 설정.
-- data/eval.csv → data/test.csv로 이름 변경 후 사용.
+
+
+
+
