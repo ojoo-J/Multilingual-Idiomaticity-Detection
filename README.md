@@ -7,7 +7,7 @@ Orig: https://github.com/jin530/MelBERT
 ### Data
 Subtask A, zero-shot setting only
 
-### requirements
+### Requirements
 boto3==1.16.63 </br>
 nltk==3.5 </br>
 numpy==1.20.0 </br>
