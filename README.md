@@ -33,8 +33,4 @@ opython main.py --model_type {model type name} --bert_model xlm-roberta-base
 
 
 
-### Model Typ
-### Model Typ
 
-
-~~~
