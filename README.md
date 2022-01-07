@@ -19,16 +19,22 @@ torchvision==0.7.0 </br>
 tqdm==4.56.0 </br>
 transformers==4.2.2 </br>
 
-### train
-~~~
-python main.py --model_type MELBERT --bert_model xlm-roberta-base
-~~~
-- cfg 파일에서 do_train = True, do_test = False, do_eval = True로 설정.
-- data/dev.csv → data/test.csv로 이름 변경 후 사용.
+### Model Type
+- **MELBERT**: SPV + MIP / only target sentence / 
+- **MELBERT_CONTEXT**: SPV + MIP / context o / 
+- **MELBERT_SPV**: SPV / only target sentence / 
+- **MELBERT_SPV_CONTEXT**: SPV / context o / 
 
-### inference
+
+### Run
 ~~~
-python main.py --model_type MELBERT --bert_model {path of saves file}
+opython main.py --model_type {model type name} --bert_model xlm-roberta-base
 ~~~
-- cfg 파일에서 do_train = False, do_test = True, do_eval = False로 설정.
-- data/eval.csv → data/test.csv로 이름 변경 후 사용.
+
+
+
+### Model Typ
+### Model Typ
+
+
+~~~
