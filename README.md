@@ -1,7 +1,7 @@
 # SemEval-2022-task2
 Multilingual Idiomaticity Detection and Sentence Embedding 
 
-## MelBERT
+## MelBERT_MyCode
 Orig: https://github.com/jin530/MelBERT
 
 ### Data
