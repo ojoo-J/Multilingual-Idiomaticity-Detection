@@ -20,15 +20,15 @@ tqdm==4.56.0 </br>
 transformers==4.2.2 </br>
 
 ### Model Type
-- **MELBERT**: SPV + MIP / only target sentence / 
-- **MELBERT_CONTEXT**: SPV + MIP / context o / 
-- **MELBERT_SPV**: SPV / only target sentence / 
-- **MELBERT_SPV_CONTEXT**: SPV / context o / 
+- **MELBERT**: SPV + MIP / only target sentence / convert_examples_to_two_features()
+- **MELBERT_CONTEXT**: SPV + MIP / context o / convert_examples_to_two_features_with_context()
+- **MELBERT_SPV**: SPV / only target sentence / convert_examples_to_features()
+- **MELBERT_SPV_CONTEXT**: SPV / context o / convert_examples_to_features_with_context()
 
 
 ### Run
 ~~~
-opython main.py --model_type {model type name} --bert_model xlm-roberta-base
+python main.py
 ~~~
 
 
