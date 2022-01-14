@@ -189,12 +189,81 @@ def save_data(input_location, output_location):
     create_data( input_location, output_location )
 
 
+def extend_data(input_location, output_location):
+
+    train = pd.read_csv(input_location + 'train.csv', encoding='utf-8', sep=',')
+    train = train.fillna('')
+
+    new_list = []
+
+    for i in range(len(train)):
+            
+        ex = train.iloc[i,:]
+
+        id = ex['ID'] # str
+        label = ex['label'] # int
+        target = ex['target'] # str
+        prev = ex['previous'] # str
+        next = ex['next'] # str
+        sent = ex['sentence'] # str
+        mwe = ex['mwe'] # str
+
+        new_id = id + '-1'
+
+        if label==0 and (mwe in prev):
+
+            new_label = 0
+            new_target = prev
+            new_prev = ""
+            new_next = target
+            new_sent = new_prev + new_target + new_next
+            new_mwe = mwe
+            new_list.append([new_id, new_label, new_target, new_prev, new_next, new_sent, new_mwe])
+
+
+        if label==0 and (mwe in next):
+            
+            new_label = 0
+            new_target = next
+            new_prev = target
+            new_next = ""
+            new_sent = new_prev + new_target + new_next
+            new_mwe = mwe
+            new_list.append([new_id, new_label, new_target, new_prev, new_next, new_sent, new_mwe])
+
+        if label==1 and (mwe in prev):
+
+            new_label = 1
+            new_target = prev
+            new_prev = ""
+            new_next = target
+            new_sent = new_prev + new_target + new_next
+            new_mwe = mwe
+            new_list.append([new_id, new_label, new_target, new_prev, new_next, new_sent, new_mwe])
+
+        if label==1 and (mwe in next):
+
+            new_label = 1
+            new_target = next
+            new_prev = target
+            new_next = ""
+            new_sent = new_prev + new_target + new_next
+            new_mwe = mwe
+            new_list.append([new_id, new_label, new_target, new_prev, new_next, new_sent, new_mwe])
+
+
+    for row in new_list:
+        train = train.append(pd.Series(row, index=train.columns), ignore_index=True)
+
+    train.to_csv(output_location + 'train.csv', sep=',', index=False) #tsv로 저장
+
+
 def make_index_col(df, output_location, filename):
 
     index_col_list = []
 
     for row in range(len(df)):
-
+        
         sent = df['target'][row]
         #new_sent = re.sub('[=+,#/\?:^$.@*\"※~&%ㆍ!』\\‘|\(\)\[\]\<\>`\'…》]', '', sent)
         new_sent = re.sub('-', ' ', sent) 
@@ -235,8 +304,6 @@ def make_index_col(df, output_location, filename):
     df['index'] = index_col_list
     #output_location = '/home/ojoo/SemEval-2022-Task2/MelBERT/My_Code_context/preproc/preprec_data/'
     df.to_csv(output_location + '{}.csv'.format(filename), sep='\t', index=False) #tsv로 저장
-
-
 
 def create_final_data(location):
 

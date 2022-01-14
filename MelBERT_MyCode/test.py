@@ -454,7 +454,7 @@ len(b)
 
 
 
-a = ['<s>', '▁De', '▁acordo', '▁com', '▁presidente', '▁do', '▁bloc', 'o', ',', '▁Paulo', '▁de', '▁Tá', 'rsi', 'o', ',', '▁o']
+a = ['<s>', '▁Um', '▁in', 'c', 'ên', 'dio', '▁atingi', 'u', '▁um', '▁cami', 'nh', 'ão', '▁na', '▁noite', '▁desta', '▁segunda', '-', 'feira', '▁(5)', ',', '▁no', '▁km', '▁315', '▁da', '▁rodo', 'via', '▁Anh', 'an', 'guera', '▁(', 'SP', '-', '330', '),', '▁em', '▁Rib', 'eirão', '▁Preto', '.', '▁Segundo', '▁as', '▁informações', ',', '▁o', '▁veículo', '▁transporta', 'va', '▁papel']
 print(len(a))
-b = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+b = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 ]
 print(len(b))

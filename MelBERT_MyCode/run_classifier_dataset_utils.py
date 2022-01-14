@@ -374,7 +374,7 @@ def convert_examples_to_features_with_context(
         if ex_index % 10000 == 0:
             logger.info("Writing example %d of %d" % (ex_index, len(examples)))
 
-        print('mwe: ', example.mwe)
+        #print('mwe: ', example.mwe)
         tokens_a = tokenizer.tokenize(example.text_a)  # tokenize the sentence
         tokens_prev = tokenizer.tokenize(example.text_prev)
         tokens_next = tokenizer.tokenize(example.text_next)
@@ -413,8 +413,8 @@ def convert_examples_to_features_with_context(
                 #    tokens_b += len(w_tok) - 1
                 if i < mwe_index:
                     tokens_b += len(w_tok)-1 
-            print('text_b_list: ', text_b_list)
-            print('text_b_list_flatten: ', sum(text_b_list, []))
+            #print('text_b_list: ', text_b_list)
+            #print('text_b_list_flatten: ', sum(text_b_list, []))
 
             ## prev 추가
             for i, w in enumerate(example.text_prev.split()):
@@ -442,7 +442,7 @@ def convert_examples_to_features_with_context(
             tokens_all = tokens_all[: (max_seq_length - 2 - len(sum(text_b_list, [])))]
 
         tokens = [tokenizer.cls_token] + tokens_all + sum(text_b_list, []) + [tokenizer.sep_token]
-        print('tokens:', tokens)
+        #print('tokens:', tokens)
 
         segment_ids = [0] * len(tokens)
         input_ids = tokenizer.convert_tokens_to_ids(tokens)
@@ -469,7 +469,7 @@ def convert_examples_to_features_with_context(
         input_mask += [0] * len(padding)
         segment_ids += [0] * len(padding)
 
-        print('segment_ids: ',segment_ids)
+        #print('segment_ids: ',segment_ids)
 
         assert len(input_ids) == max_seq_length
         assert len(input_mask) == max_seq_length
@@ -808,7 +808,7 @@ def convert_examples_to_two_features_with_context(
         
             #text_b = list(map(int, text_b))  # index of target word = list
 
-            print('text_b: ', text_b)
+            #print('text_b: ', text_b)
 
 
             tokens_b = int(text_b[0])
@@ -913,7 +913,7 @@ def convert_examples_to_two_features_with_context(
             except:
                 pass
 
-        print('segment_ids check: ', segment_ids)
+        #print('segment_ids check: ', segment_ids)
 
 
         input_mask = [1] * len(input_ids)
@@ -927,11 +927,11 @@ def convert_examples_to_two_features_with_context(
         #print('input_ids: ',input_ids)
         #print('input_mask: ',input_mask)
         print('segment_ids: ',segment_ids)
-        print('len(input_ids): ', len(input_ids))
-        print('len(input_mask): ', len(input_mask))
-        print('len(segment_ids): ', len(segment_ids))
+        #print('len(input_ids): ', len(input_ids))
+        #print('len(input_mask): ', len(input_mask))
+        #print('len(segment_ids): ', len(segment_ids))
 
-        print('len(input_ids): ', len(input_ids))
+        #print('len(input_ids): ', len(input_ids))
         assert len(input_ids) == max_seq_length
         assert len(input_mask) == max_seq_length
         assert len(segment_ids) == max_seq_length

@@ -111,6 +111,7 @@ def main():
     orig_location = './data/orig/'
     preproc_location = './data/preproc/'
     save_data(input_location = orig_location, output_location = preproc_location)
+    #extend_data(input_location = preproc_location, output_location = preproc_location)
     create_final_data(location=preproc_location)
 
     # Idiom
