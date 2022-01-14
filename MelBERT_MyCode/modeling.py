@@ -491,7 +491,7 @@ class AutoModelForSequenceClassification_SPV_MIP(nn.Module):
         target_output_2 = target_output_2.mean(1)
 
         # Get hidden vectors each from SPV and MIP linear layers
-        SPV_hidden = self.SPV_linear(torch.cat([pooled_output, target_output_2], dim=1))
+        SPV_hidden = self.SPV_linear(torch.cat([pooled_output, target_output], dim=1))
         MIP_hidden = self.MIP_linear(torch.cat([target_output_2, target_output], dim=1))
 
         logits = self.classifier(self.dropout(torch.cat([SPV_hidden, MIP_hidden], dim=1)))
