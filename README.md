@@ -1,5 +1,5 @@
 # Effective Idiomaticity Detection with Consideration at Different Levels of Contextualization
-**NAACL SemEval 2022** [[📝 Paper](https://aclanthology.org/2022.semeval-1.17/)]
+**NAACL SemEval 2022** [[Paper](https://aclanthology.org/2022.semeval-1.17/)]
 
 ## Summary
 This research was presents a solution to [SemEval-2022 Task 2: Multilingual Idiomaticity Detection and Sentence Embedding](https://aclanthology.org/2022.semeval-1.13.pdf). The task focuses on determining whether a Multi-Word Expression (MWE) within a sentence is used idiomatically or not in a multilingual setting. Identifying idiomatic expressions in sentences using Large Language Models (LLMs) remains a challenging problem. This study explores how to effectively perform sentence embedding to address this task.
